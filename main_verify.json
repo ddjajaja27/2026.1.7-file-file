@@ -1,0 +1,14 @@
+{
+  "workdir": "D:/12.17.幽门螺杆菌/reproducible_pipeline/main_workdir_legacyB11_VPD34_20260104_165041",
+  "baseline_mc39": {
+    "rows": 31617,
+    "noise_docs": 3545,
+    "noise_ratio": 0.11212322484739222
+  },
+  "vpd_mc39": {
+    "rows": 31617,
+    "noise_docs": 1056,
+    "noise_ratio": 0.033399753297276784
+  },
+  "generated_at": "2026-01-04 16:51:43"
+}

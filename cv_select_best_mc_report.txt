@@ -1,0 +1,66 @@
+================================================================================
+C_v 最优 mc 选择报告 - 幽门螺杆菌 (helicobacter_pylori)
+生成时间: 2026-01-04 20:26:48
+max_docs=3000 seed=20251220
+参考：Röder et al. (2015) WSDM; Newman et al. (2010) NAACL
+
+【一、问题定义（超参数选择）】
+- 目标：对每个去噪方法（baseline/A/B/C/AB/ABC），在 Step07 产出的候选 min_cluster_size (mc) 中选择一个最优值，用于 Step09/Step10 的统一可视化与报告。
+- 评价指标：主题一致性 C_v（越大越好）+ 噪音比例 noise（Topic=-1 文档占比，越小越好）。
+
+【二、标准化多目标选择准则（审稿友好版）】
+对每个候选 mc_i，定义：
+- c_i = C_v(mc_i)  （maximize）
+- n_i = noise(mc_i)（minimize）
+噪音约束：给定参考阈值 r（来自父方法的最小噪音；baseline 无此约束），可行集：
+- F(r) = { i | n_i <= r }
+Pareto（帕累托）前沿定义（双目标）：候选 a 支配 b 当且仅当：
+- c_a >= c_b 且 n_a <= n_b，并且至少一项严格更优
+- Pareto(F) = F 中所有不被其它候选支配的点
+最终决策规则：
+- 若 F(r) 非空：从 Pareto(F) 中选 c 最大者；若并列，选 n 更小者（再并列选 mc 更小者，保证确定性）。
+- 若 F(r) 为空：说明无候选能满足噪音阈值；在全体候选上计算 Pareto(All)，先选 n 最小者；若并列选 c 更大者（再并列选 mc 更小者）。
+说明：这是一种常见的“硬约束 + 多目标折中”策略，避免把 C_v 提升建立在明显更差的噪音上，同时在不可行时给出最保守、可解释的退化规则。
+
+【三、候选 mc 从何而来（Step07 自适应生成的内在原因）】
+Step08 并不‘固定只评估 22/39/56’，它只评估 Step07 实际写到磁盘的 *_mc*_topic_info.csv。
+Step07 的候选 mc 由 _engine_bertopic.py 自适应计算得到，核心形式为：
+- mc_base = α·sqrt(N) + β·ln(N)
+- mc_adjusted = mc_base · (1 + γ·H_vocab_norm + δ·density_factor)
+其中：N 为文档数；H_vocab_norm 为词汇香农熵归一化（反映文本多样性）；density_factor 为向量空间密度的反向量（越稠密越小）。
+候选集由若干缩放与裁剪得到（并去重排序）：
+- mc ∈ { 1.3·mc_adjusted, 1.0·mc_adjusted, 0.7·mc_adjusted, 0.4·mc_adjusted } 经过 clip 到 [15, 0.5·sqrt(N)] 等上界
+为何你经常看到‘重复的候选值’：如果不同去噪方法的 N 与文本统计特征接近，代入同一公式会得到相近的 mc_adjusted，离散化（取整+clip）后自然落在同一组整数上（例如 22/39/56/73）。
+可复现性：向量密度估计需要抽样；为审稿可复现，我们固定了抽样随机种子，因此同一数据下候选 mc 列表稳定。
+引用（背景依据）：McInnes et al., 2017 (HDBSCAN/JOSS, sqrt(N) 经验上界); Campello et al., 2013 (HDBSCAN 密度聚类思想); Shannon (信息熵用于多样性刻画)。
+================================================================================
+
+→ 评估 baseline (用于噪音参考) ...
+[baseline] best_mc=39 C_v=0.5948 noise=11.21% (file=helicobacter_pylori_mc39_topic_info.csv)
+
+→ 评估 VPD ...
+[VPD] best_mc=39 C_v=0.6261 noise=3.34% (constraint+pareto: noise<=min(baseline)(11.21%); pick max C_v on Pareto front) (file=helicobacter_pylori_mc39_topic_info.csv)
+    evaluated_mcs=[22, 39, 56, 73] (n=4)
+    noise_ref=11.21%  label=min(baseline)
+    feasible_mcs=[22, 39, 56, 73]
+    pareto_mcs=[39, 56, 73]
+    decision_rule=feasible(F): pareto(F) -> max C_v (tie: min noise)
+    候选排序：C_v ↓
+    mc=39  C_v=0.6261  noise=3.34%  topics=158  (helicobacter_pylori_mc39_topic_info.csv)
+    mc=56  C_v=0.6106  noise=2.86%  topics=114  (helicobacter_pylori_mc56_topic_info.csv)
+    mc=22  C_v=0.6008  noise=3.99%  topics=278  (helicobacter_pylori_mc22_topic_info.csv)
+
+→ 评估 A ...
+[A] 失败：missing_dir
+
+→ 评估 B ...
+[B] 失败：missing_dir
+
+→ 评估 C ...
+[C] 失败：missing_dir
+
+→ 评估 AB ...
+[AB] 失败：missing_dir
+
+→ 评估 ABC ...
+[ABC] 失败：missing_dir

@@ -1,0 +1,13 @@
+﻿Name,Value
+q_comp_mid,0.5
+q_nov_low,0.6
+q_nov_high,0.75
+q_heat_low,0.5
+q_heat_mid,0.5
+q_heat_high,0.75
+Composite_mid,0.2150560177001361
+Novelty_low,0.4325887313935976
+Novelty_high,0.557942260062673
+Heat_low,0.1916245829016178
+Heat_mid,0.1916245829016178
+Heat_high,0.3041854492989734

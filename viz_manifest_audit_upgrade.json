@@ -1,0 +1,13 @@
+{
+  "bundle_root": "D:/12.17.幽门螺杆菌/audit_bundle_20260104_1700",
+  "outdir": "D:/12.17.幽门螺杆菌/audit_bundle_20260104_1700/files/paper_evidence",
+  "generated": [
+    "Figure3_CommonUMAP_SideBySide.png",
+    "Figure4_Macro5_SideBySide.png",
+    "Figure5_Macro5_Transition_Heatmap.png"
+  ],
+  "notes": [
+    "These figures are derived from files/paper_evidence outputs (common UMAP2D + macro5).",
+    "Side-by-side figures embed the already-rendered PNGs for audit readability."
+  ]
+}

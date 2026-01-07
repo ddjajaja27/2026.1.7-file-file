@@ -1,0 +1,218 @@
+{
+  "project_prefix": "helicobacter_pylori",
+  "generated_at": "2026-01-04 20:26:48",
+  "max_docs": 3000,
+  "seed": 20251220,
+  "methods": {
+    "baseline": {
+      "method": "baseline",
+      "status": "ok",
+      "max_docs": 3000,
+      "seed": 20251220,
+      "best": {
+        "mc": 39,
+        "cv": 0.5948207475944268,
+        "file": "helicobacter_pylori_mc39_topic_info.csv",
+        "num_topics": 118,
+        "noise_ratio": 0.11212322484739222
+      },
+      "selection_note": "pareto: pick max C_v on Pareto front (tie: min noise)",
+      "noise_ref": null,
+      "noise_ref_label": "none",
+      "selection_details": {
+        "noise_ref": null,
+        "noise_ref_label": "none",
+        "feasible_mcs": [],
+        "pareto_mcs": [
+          39,
+          22
+        ],
+        "rule": "baseline: pareto(All) -> max C_v (tie: min noise)"
+      },
+      "evaluated_mcs": [
+        22,
+        39,
+        56,
+        73
+      ],
+      "scores_by_cv": [
+        {
+          "mc": 39,
+          "cv": 0.5948207475944268,
+          "file": "helicobacter_pylori_mc39_topic_info.csv",
+          "num_topics": 118,
+          "noise_ratio": 0.11212322484739222
+        },
+        {
+          "mc": 22,
+          "cv": 0.5826289308669506,
+          "file": "helicobacter_pylori_mc22_topic_info.csv",
+          "num_topics": 193,
+          "noise_ratio": 0.09627731916374102
+        },
+        {
+          "mc": 56,
+          "cv": 0.5765736579724148,
+          "file": "helicobacter_pylori_mc56_topic_info.csv",
+          "num_topics": 87,
+          "noise_ratio": 0.138027010785337
+        },
+        {
+          "mc": 73,
+          "cv": 0.56576886463172,
+          "file": "helicobacter_pylori_mc73_topic_info.csv",
+          "num_topics": 69,
+          "noise_ratio": 0.14194895151342632
+        }
+      ],
+      "scores_by_noise_cv": [
+        {
+          "mc": 22,
+          "cv": 0.5826289308669506,
+          "file": "helicobacter_pylori_mc22_topic_info.csv",
+          "num_topics": 193,
+          "noise_ratio": 0.09627731916374102
+        },
+        {
+          "mc": 39,
+          "cv": 0.5948207475944268,
+          "file": "helicobacter_pylori_mc39_topic_info.csv",
+          "num_topics": 118,
+          "noise_ratio": 0.11212322484739222
+        },
+        {
+          "mc": 56,
+          "cv": 0.5765736579724148,
+          "file": "helicobacter_pylori_mc56_topic_info.csv",
+          "num_topics": 87,
+          "noise_ratio": 0.138027010785337
+        },
+        {
+          "mc": 73,
+          "cv": 0.56576886463172,
+          "file": "helicobacter_pylori_mc73_topic_info.csv",
+          "num_topics": 69,
+          "noise_ratio": 0.14194895151342632
+        }
+      ]
+    },
+    "VPD": {
+      "method": "VPD",
+      "status": "ok",
+      "max_docs": 3000,
+      "seed": 20251220,
+      "best": {
+        "mc": 39,
+        "cv": 0.6260797227454578,
+        "file": "helicobacter_pylori_mc39_topic_info.csv",
+        "num_topics": 158,
+        "noise_ratio": 0.033399753297276784
+      },
+      "selection_note": "constraint+pareto: noise<=min(baseline)(11.21%); pick max C_v on Pareto front",
+      "noise_ref": 0.11212322484739222,
+      "noise_ref_label": "min(baseline)",
+      "selection_details": {
+        "noise_ref": 0.11212322484739222,
+        "noise_ref_label": "min(baseline)",
+        "feasible_mcs": [
+          22,
+          39,
+          56,
+          73
+        ],
+        "pareto_mcs": [
+          39,
+          56,
+          73
+        ],
+        "rule": "feasible(F): pareto(F) -> max C_v (tie: min noise)"
+      },
+      "evaluated_mcs": [
+        22,
+        39,
+        56,
+        73
+      ],
+      "scores_by_cv": [
+        {
+          "mc": 39,
+          "cv": 0.6260797227454578,
+          "file": "helicobacter_pylori_mc39_topic_info.csv",
+          "num_topics": 158,
+          "noise_ratio": 0.033399753297276784
+        },
+        {
+          "mc": 56,
+          "cv": 0.6105977099509127,
+          "file": "helicobacter_pylori_mc56_topic_info.csv",
+          "num_topics": 114,
+          "noise_ratio": 0.028560584495682703
+        },
+        {
+          "mc": 22,
+          "cv": 0.6008159302841544,
+          "file": "helicobacter_pylori_mc22_topic_info.csv",
+          "num_topics": 278,
+          "noise_ratio": 0.03985197836606889
+        },
+        {
+          "mc": 73,
+          "cv": 0.5883028518047378,
+          "file": "helicobacter_pylori_mc73_topic_info.csv",
+          "num_topics": 87,
+          "noise_ratio": 0.025967043046462347
+        }
+      ],
+      "scores_by_noise_cv": [
+        {
+          "mc": 73,
+          "cv": 0.5883028518047378,
+          "file": "helicobacter_pylori_mc73_topic_info.csv",
+          "num_topics": 87,
+          "noise_ratio": 0.025967043046462347
+        },
+        {
+          "mc": 56,
+          "cv": 0.6105977099509127,
+          "file": "helicobacter_pylori_mc56_topic_info.csv",
+          "num_topics": 114,
+          "noise_ratio": 0.028560584495682703
+        },
+        {
+          "mc": 39,
+          "cv": 0.6260797227454578,
+          "file": "helicobacter_pylori_mc39_topic_info.csv",
+          "num_topics": 158,
+          "noise_ratio": 0.033399753297276784
+        },
+        {
+          "mc": 22,
+          "cv": 0.6008159302841544,
+          "file": "helicobacter_pylori_mc22_topic_info.csv",
+          "num_topics": 278,
+          "noise_ratio": 0.03985197836606889
+        }
+      ]
+    },
+    "A": {
+      "method": "A",
+      "status": "missing_dir"
+    },
+    "B": {
+      "method": "B",
+      "status": "missing_dir"
+    },
+    "C": {
+      "method": "C",
+      "status": "missing_dir"
+    },
+    "AB": {
+      "method": "AB",
+      "status": "missing_dir"
+    },
+    "ABC": {
+      "method": "ABC",
+      "status": "missing_dir"
+    }
+  }
+}

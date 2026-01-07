@@ -1,0 +1,15 @@
+{
+  "baseline": {
+    "mc": 39,
+    "cv": 0.5948207475944268,
+    "file": "helicobacter_pylori_mc39_topic_info.csv",
+    "noise_ratio": 0.11212322484739222
+  },
+  "VPD": {
+    "mc": 39,
+    "cv": 0.6260797227454578,
+    "file": "helicobacter_pylori_mc39_topic_info.csv",
+    "noise_ratio": 0.033399753297276784,
+    "selection_note": "constraint+pareto: noise<=min(baseline)(11.21%); pick max C_v on Pareto front"
+  }
+}

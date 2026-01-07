@@ -1,0 +1,14 @@
+﻿Name,Value
+q_comp_mid,0.35
+q_nov_low,0.5
+q_nov_high,0.6
+q_heat_low,0.25
+q_heat_mid,0.6
+q_heat_high,0.8
+Composite_mid,0.18228209718940244
+Novelty_low,0.3969722439158541
+Novelty_high,0.4325887313935976
+Heat_low,0.1193478857690263
+Heat_mid,0.24825761944830127
+Heat_high,0.3246828487486814
+tuning_penalty,0.0
